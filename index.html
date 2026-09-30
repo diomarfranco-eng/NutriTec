@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriTec | Combate à Seletividade Alimentar Infantil</title>
+  <meta name="description" content="Solução tecnológica para auxiliar pais e cuidadores no combate à seletividade alimentar infantil com filtros sensoriais, receitas adaptadas e guias de abordagem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4CAF50;
+      --primary-dark: #388E3C;
+      --secondary: #FF9800;
+      --accent: #2196F3;
+      --bg: #F8FBF8;
+      --card: #FFFFFF;
+      --text: #2E3A2E;
+      --muted: #6B7B6B;
+      --soft-green: #E8F5E9;
+      --soft-orange: #FFF3E0;
+      --soft-blue: #E3F2FD;
+      --soft-pink: #FCE4EC;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(46, 58, 46, 0.08);
+      --shadow-hover: 0 8px 30px rgba(46, 58, 46, 0.14);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      opacity: 0.95;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(160deg, #E8F5E9 0%, #FFF8E1 50%, #E3F2FD 100%);
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      background: white;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-dark);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--soft-green);
+    }
+
+    /* Sections */
+    section {
+      padding: 3.5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 0.6rem;
+      font-size: 1.9rem;
+      color: var(--primary-dark);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Features */
+    .features {
+      background: white;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid #E0EBE0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Filters */
+    .filters-section {
+      background: var(--soft-green);
+    }
+
+    .filters-panel {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2.5rem;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .filter-group h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-chip {
+      appearance: none;
+      -webkit-appearance: none;
+      background: #F0F4F0;
+      border: 2px solid transparent;
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text);
+    }
+
+    .filter-chip:hover {
+      background: #E0EBE0;
+    }
+
+    .filter-chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .filter-chip.allergy.active {
+      background: #E53935;
+      border-color: #E53935;
+    }
+
+    .filter-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .results-count {
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Recipes Grid */
+    .recipes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .recipe-card.hidden {
+      display: none;
+    }
+
+    .recipe-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .recipe-tags {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.92);
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .recipe-body {
+      padding: 1.3rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .recipe-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .recipe-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .recipe-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .recipe-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .recipe-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 20px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #F0F0F0;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #E0E0E0;
+    }
+
+    .modal-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .modal-content {
+      padding: 1.8rem;
+    }
+
+    .modal-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      color: var(--primary-dark);
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-tag {
+      background: var(--soft-green);
+      color: var(--primary-dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .modal-tag.allergy {
+      background: #FFEBEE;
+      color: #C62828;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-box {
+      background: var(--bg);
+      padding: 0.9rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .info-box .label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .info-box .value {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .modal-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-section h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ingredients-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+    }
+
+    .ingredients-list li {
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px dashed #E0EBE0;
+    }
+
+    .ingredients-list li::before {
+      content: "🥗 ";
+    }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps-list li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .steps-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .tips-box {
+      background: var(--soft-orange);
+      border-radius: 12px;
+      padding: 1.2rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .tips-box p {
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tips-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Feedback */
+    .feedback-section {
+      background: var(--soft-blue);
+      border-radius: 12px;
+      padding: 1.3rem;
+      margin-top: 1.5rem;
+    }
+
+    .feedback-section h3 {
+      margin-bottom: 0.8rem;
+    }
+
+    .feedback-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .fb-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      border: 2px solid #BBDEFB;
+      background: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .fb-btn:hover, .fb-btn.selected {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .feedback-note {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #BBDEFB;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 70px;
+      margin-bottom: 0.8rem;
+    }
+
+    .feedback-saved {
+      display: none;
+      background: #C8E6C9;
+      color: #2E7D32;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    /* About */
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .about-list {
+      list-style: none;
+    }
+
+    .about-list li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .about-list li::before {
+      content: "✅";
+    }
+
+    .about-visual {
+      background: linear-gradient(145deg, var(--soft-green), var(--soft-blue));
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual .big-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #2E3A2E;
+      color: #C8D6C8;
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    footer .logo {
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      max-width: 500px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #A5D6A7;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      border-top: 1px solid #3E4A3E;
+      padding-top: 1.2rem;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      display: none;
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .empty-state .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-dark);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.8rem;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .ingredients-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 3rem 1.2rem 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">🥦</div>
+        NutriTec
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <nav id="mainNav">
+        <a href="#inicio">Início</a>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#receitas">Receitas</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Transforme as refeições em momentos de descoberta</h1>
+      <p>O <strong>NutriTec</strong> une nutrição pedagógica e tecnologia para ajudar pais, cuidadores e profissionais da saúde a combater a seletividade alimentar infantil de forma lúdica, organizada e sem pressão.</p>
+      <div class="hero-badges">
+        <span class="badge">🎯 Filtros sensoriais</span>
+        <span class="badge">🌈 Por cores</span>
+        <span class="badge">💊 Vitaminas</span>
+        <span class="badge">🚫 Alergias</span>
+        <span class="badge">📝 Feedback</span>
+      </div>
+      <a href="#receitas" class="btn btn-primary">Explorar Receitas →</a>
+    </div>
+  </section>
+
+  <!-- Funcionalidades -->
+  <section class="features" id="funcionalidades">
+    <div class="container">
+      <h2 class="section-title">Funcionalidades do NutriTec</h2>
+      <p class="section-subtitle">Ferramentas pensadas para respeitar o ritmo da criança e apoiar os cuidadores com praticidade e segurança.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E8F5E9;">🖐️</div>
+          <h3>Filtro Sensorial de Texturas</h3>
+          <p>Selecione receitas por consistência (crocante, macio, purê, líquido...) respeitando a sensibilidade tátil e oral de cada criança.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FFF3E0;">🎨</div>
+          <h3>Filtro por Cores</h3>
+          <p>Organize alimentos e pratos por tonalidades para trabalhar a aceitação visual de novos ingredientes de forma progressiva.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E3F2FD;">💊</div>
+          <h3>Filtro Nutricional</h3>
+          <p>Busque pratos focados nos micronutrientes e vitaminas específicas que a criança precisa complementar na dieta.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FFEBEE;">🚫</div>
+          <h3>Filtro de Alergias</h3>
+          <p>Exclua ingredientes alérgenos (lactose, glúten, ovos, oleaginosas) garantindo segurança alimentar em cada receita.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#F3E5F5;">📖</div>
+          <h3>Guias de Abordagem</h3>
+          <p>Cada receita traz orientações de comportamento para oferecer o alimento sem gerar ansiedade ou pressão na criança.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E0F7FA;">📊</div>
+          <h3>Registro e Feedback</h3>
+          <p>Registre se a criança aceitou, recusou ou experimentou. Acompanhe o progresso da reeducação alimentar facilmente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Receitas + Filtros -->
+  <section class="filters-section" id="receitas">
+    <div class="container">
+      <h2 class="section-title">Catálogo de Receitas Adaptadas</h2>
+      <p class="section-subtitle">10 preparações pensadas para tornar o consumo atraente. Use os filtros para encontrar a opção ideal.</p>
+
+      <div class="filters-panel">
+        <div class="filters-grid">
+          <div class="filter-group">
+            <h4>🖐️ Textura</h4>
+            <div class="filter-options" data-filter="texture">
+              <button class="filter-chip" data-value="crocante">Crocante</button>
+              <button class="filter-chip" data-value="macio">Macio</button>
+              <button class="filter-chip" data-value="pure">Purê</button>
+              <button class="filter-chip" data-value="liquido">Líquido</button>
+              <button class="filter-chip" data-value="misto">Misto</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>🎨 Cor Principal</h4>
+            <div class="filter-options" data-filter="color">
+              <button class="filter-chip" data-value="laranja">Laranja</button>
+              <button class="filter-chip" data-value="verde">Verde</button>
+              <button class="filter-chip" data-value="amarelo">Amarelo</button>
+              <button class="filter-chip" data-value="vermelho">Vermelho</button>
+              <button class="filter-chip" data-value="multicolor">Multicolor</button>
+              <button class="filter-chip" data-value="marrom">Marrom</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>💊 Nutrientes</h4>
+            <div class="filter-options" data-filter="nutrient">
+              <button class="filter-chip" data-value="vitamina-a">Vitamina A</button>
+              <button class="filter-chip" data-value="vitamina-c">Vitamina C</button>
+              <button class="filter-chip" data-value="ferro">Ferro</button>
+              <button class="filter-chip" data-value="fibras">Fibras</button>
+              <button class="filter-chip" data-value="proteina">Proteína</button>
+              <button class="filter-chip" data-value="calcio">Cálcio</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>🚫 Excluir Alérgenos</h4>
+            <div class="filter-options" data-filter="allergy">
+              <button class="filter-chip allergy" data-value="gluten">Glúten</button>
+              <button class="filter-chip allergy" data-value="lactose">Lactose</button>
+              <button class="filter-chip allergy" data-value="ovos">Ovos</button>
+              <button class="filter-chip allergy" data-value="oleaginosas">Oleaginosas</button>
+            </div>
+          </div>
+        </div>
+        <div class="filter-actions">
+          <span class="results-count" id="resultsCount">Mostrando 10 receitas</span>
+          <button class="btn btn-secondary btn-sm" id="clearFilters">Limpar filtros</button>
+        </div>
+      </div>
+
+      <div class="recipes-grid" id="recipesGrid">
+        <!-- Cards will be injected by JS -->
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <div class="icon">🔍</div>
+        <h3>Nenhuma receita encontrada</h3>
+        <p>Tente ajustar os filtros ou limpe para ver todas as opções.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Sobre o NutriTec</h2>
+          <p>O NutriTec é uma solução tecnológica desenvolvida para auxiliar pais, cuidadores e profissionais da saúde no combate e mitigação da seletividade alimentar infantil.</p>
+          <p>Unimos conceitos de <strong>nutrição pedagógica</strong> e tecnologia para transformar o momento das refeições e a introdução de novos alimentos em uma experiência lúdica, organizada e eficiente.</p>
+          <ul class="about-list">
+            <li>Código leve, limpo e 100% em HTML + CSS + JS</li>
+            <li>Navegação intuitiva e respostas rápidas</li>
+            <li>Foco no respeito ao ritmo e à autonomia da criança</li>
+            <li>Ferramenta prática e acessível de apoio nutricional</li>
+          </ul>
+        </div>
+        <div class="about-visual">
+          <div class="big-icon">🍎🥕🥦</div>
+          <h3 style="color:var(--primary-dark); margin-bottom:0.5rem;">Alimentação sem pressão</h3>
+          <p style="color:var(--muted); max-width:280px;">Exposição gradual • Exploração sensorial • Reforço positivo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="logo">
+      <div class="logo-icon">🥦</div>
+      NutriTec
+    </div>
+    <p>Ferramenta de apoio à reeducação alimentar infantil. Não substitui orientação profissional de nutricionista ou pediatra.</p>
+    <div class="footer-links">
+      <a href="#inicio">Início</a>
+      <a href="#receitas">Receitas</a>
+      <a href="#sobre">Sobre</a>
+    </div>
+    <div class="copyright">© 2026 NutriTec — Desenvolvido com 💚 para famílias</div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+      <div class="modal-img" id="modalImg"></div>
+      <div class="modal-content" id="modalContent">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== DATA: 10 RECEITAS ==========
+    const recipes = [
+      {
+        id: 1,
+        name: "Muffins de Legumes Coloridos",
+        img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=400&fit=crop",
+        desc: "Bolinhos macios e coloridos que escondem cenoura, abobrinha e espinafre. Aparência de sobremesa, nutrientes de verdade.",
+        texture: ["macio"],
+        color: ["laranja", "verde"],
+        nutrients: ["vitamina-a", "vitamina-c", "fibras"],
+        allergens: ["gluten", "ovos", "lactose"],
+        prepTime: 15,
+        cookTime: 20,
+        totalTime: 35,
+        servings: "8 muffins",
+        difficulty: "Fácil",
+        ingredients: [
+          "2 ovos",
+          "1 cenoura ralada",
+          "1/2 abobrinha ralada",
+          "1/2 xícara de espinafre picado",
+          "1/2 xícara de farinha de trigo (ou sem glúten)",
+          "1/2 xícara de queijo ralado",
+          "1 colher de chá de fermento",
+          "Sal e temperos a gosto"
+        ],
+        steps: [
+          "Pré-aqueça o forno a 180°C e unte forminhas de muffin.",
+          "Em uma tigela, misture os ovos, a cenoura, a abobrinha e o espinafre.",
+          "Adicione a farinha, o queijo, o fermento e os temperos. Misture bem.",
+          "Distribua a massa nas forminhas e asse por 20 minutos ou até dourar.",
+          "Deixe esfriar um pouco antes de servir. Pode ser oferecido frio ou morno."
+        ],
+        tips: [
+          "Deixe a criança ajudar a ralar os legumes (com supervisão) ou a colocar a massa nas forminhas.",
+          "Apresente como “bolinho mágico” e não force a comer tudo de uma vez.",
+          "Ofereça primeiro em pedacinhos pequenos ao lado de um alimento já aceito."
+        ]
+      },
+      {
+        id: 2,
+        name: "Smoothie Verde Divertido",
+        img: "https://images.unsplash.com/photo-1623065422902-30a2d94b4c1e?w=600&h=400&fit=crop",
+        desc: "Bebida cremosa e refrescante que camufla espinafre com banana e morango. Ideal para introdução de verdes.",
+        texture: ["liquido"],
+        color: ["verde"],
+        nutrients: ["vitamina-c", "ferro", "fibras"],
+        allergens: ["lactose"],
+        prepTime: 5,
+        cookTime: 0,
+        totalTime: 5,
+        servings: "2 copos",
+        difficulty: "Muito fácil",
+        ingredients: [
+          "2 bananas maduras",
+          "1 xícara de morangos (frescos ou congelados)",
+          "1 punhado generoso de espinafre fresco",
+          "1/2 xícara de iogurte natural (ou bebida vegetal)",
+          "1/2 xícara de água ou leite",
+          "Mel ou tâmaras a gosto (opcional)"
+        ],
+        steps: [
+          "Coloque todos os ingredientes no liquidificador.",
+          "Bata até ficar bem homogêneo e cremoso (cerca de 1 minuto).",
+          "Prove e ajuste a doçura se necessário.",
+          "Sirva imediatamente em copos coloridos ou com canudo divertido."
+        ],
+        tips: [
+          "Use um nome lúdico como “Poção do Super-Herói” ou “Suco do Hulk”.",
+          "Deixe a criança escolher o canudo ou decorar o copo com adesivos.",
+          "Comece com pouco espinafre e aumente gradualmente conforme a aceitação."
+        ]
+      },
+      {
+        id: 3,
+        name: "Bolinhos de Batata Crocantes",
+        img: "https://images.unsplash.com/photo-1630384066600-68d4c4c0b4c4?w=600&h=400&fit=crop",
+        desc: "Bolinhos dourados e crocantes por fora, macios por dentro. Textura favorita de muitas crianças seletivas.",
+        texture: ["crocante", "macio"],
+        color: ["amarelo"],
+        nutrients: ["fibras", "proteina"],
+        allergens: ["ovos", "gluten"],
+        prepTime: 20,
+        cookTime: 25,
+        totalTime: 45,
+        servings: "12 bolinhos",
+        difficulty: "Fácil",
+        ingredients: [
+          "4 batatas médias cozidas e amassadas",
+          "1 ovo",
+          "3 colheres de sopa de farinha de rosca (ou sem glúten)",
+          "2 colheres de sopa de queijo ralado (opcional)",
+          "Sal e ervas finas a gosto",
+          "Azeite para untar"
+        ],
+        steps: [
+          "Amasse bem as batatas ainda mornas e deixe esfriar um pouco.",
+          "Misture o ovo, a farinha de rosca, o queijo e os temperos.",
+          "Modele bolinhos pequenos com as mãos (ou use forminhas).",
+          "Coloque em uma forma untada e asse a 200°C por 20-25 minutos, virando na metade.",
+          "Sirva quentes, acompanhados de um dip de iogurte se desejar."
+        ],
+        tips: [
+          "A textura crocante por fora e macia por dentro costuma ser bem aceita.",
+          "Deixe a criança modelar os bolinhos — o envolvimento aumenta o interesse.",
+          "Ofereça sem molhos primeiro; depois experimente dips suaves."
+        ]
+      },
+      {
+        id: 4,
+        name: "Mini Pizza de Couve-flor",
+        img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=400&fit=crop",
+        desc: "Base de couve-flor assada com cobertura colorida. Versão divertida e nutritiva da pizza clássica.",
+        texture: ["macio"],
+        color: ["multicolor"],
+        nutrients: ["vitamina-c", "fibras", "proteina"],
+        allergens: ["lactose"],
+        prepTime: 20,
+        cookTime: 30,
+        totalTime: 50,
+        servings: "2-3 porções",
+        difficulty: "Média",
+        ingredients: [
+          "1 couve-flor média (só os floretes)",
+          "1 ovo (ou linhaça + água para versão sem ovo)",
+          "3 colheres de sopa de queijo ralado",
+          "Molho de tomate caseiro",
+          "Tomate, milho, azeitona e ervas para cobrir",
+          "Sal e orégano a gosto"
+        ],
+        steps: [
+          "Processe a couve-flor até virar “arroz”. Escorra bem o excesso de água.",
+          "Misture com o ovo, o queijo e o sal. Forme um disco fino em forma forrada.",
+          "Asse a 200°C por 15-20 minutos até firmar e dourar levemente.",
+          "Retire, espalhe o molho e coloque os toppings. Volte ao forno por 10 minutos.",
+          "Corte em pedaços pequenos e sirva."
+        ],
+        tips: [
+          "Chame de “pizza especial” e deixe a criança escolher os toppings.",
+          "Comece com coberturas que ela já aceita e vá adicionando um novo item por vez.",
+          "A base de couve-flor tem textura mais macia que a massa tradicional — ideal para quem rejeita massas."
+        ]
+      },
+      {
+        id: 5,
+        name: "Palitos de Cenoura com Dip de Iogurte",
+        img: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&h=400&fit=crop",
+        desc: "Cenoura em palitos crocantes servidos com um dip cremoso e suave. Perfeito para exploração sensorial.",
+        texture: ["crocante"],
+        color: ["laranja"],
+        nutrients: ["vitamina-a", "fibras"],
+        allergens: ["lactose"],
+        prepTime: 10,
+        cookTime: 0,
+        totalTime: 10,
+        servings: "2 porções",
+        difficulty: "Muito fácil",
+        ingredients: [
+          "3 cenouras médias",
+          "1/2 xícara de iogurte natural",
+          "1 colher de chá de azeite",
+          "Sal, alho em pó e ervas a gosto",
+          "Suco de limão (opcional)"
+        ],
+        steps: [
+          "Lave e descasque as cenouras. Corte em palitos finos e uniformes.",
+          "Em uma tigela pequena, misture o iogurte, o azeite, o sal e as ervas.",
+          "Disponha os palitos em um prato colorido com o dip ao lado.",
+          "Sirva imediatamente para manter a crocância."
+        ],
+        tips: [
+          "Deixe a criança “brincar” de molhar os palitos sem a obrigação de comer.",
+          "Ofereça em ambiente relaxado, talvez durante uma brincadeira.",
+          "Varie o formato (rodinhas, palitos grossos) para trabalhar diferentes texturas."
+        ]
+      },
+      {
+        id: 6,
+        name: "Purê de Abóbora com Canela",
+        img: "https://images.unsplash.com/photo-1546549039-49b1be6b0e11?w=600&h=400&fit=crop",
+        desc: "Purê aveludado e levemente adocicado. Textura suave e cor alegre que convida à experimentação.",
+        texture: ["pure"],
+        color: ["laranja"],
+        nutrients: ["vitamina-a", "fibras"],
+        allergens: [],
+        prepTime: 10,
+        cookTime: 25,
+        totalTime: 35,
+        servings: "4 porções",
+        difficulty: "Fácil",
+        ingredients: [
+          "500g de abóbora cabotiá ou moranga",
+          "1 colher de sopa de azeite ou manteiga",
+          "1 pitada de canela em pó",
+          "Sal a gosto",
+          "Água ou leite (se precisar ajustar consistência)"
+        ],
+        steps: [
+          "Descasque e corte a abóbora em cubos. Cozinhe no vapor ou água até ficar bem macia (20-25 min).",
+          "Escorra e amasse com um garfo ou processe até obter purê liso.",
+          "Adicione o azeite/manteiga, a canela e o sal. Misture bem.",
+          "Ajuste a consistência com um pouco de água ou leite se preferir mais cremoso.",
+          "Sirva morninho em tigelinhas coloridas."
+        ],
+        tips: [
+          "A textura de purê é excelente para crianças que rejeitam pedaços.",
+          "Apresente com um nome divertido (“nuvem de abóbora”) e use uma colherzinha especial.",
+          "Não force a quantidade; celebre qualquer contato positivo com o alimento."
+        ]
+      },
+      {
+        id: 7,
+        name: "Cookies de Banana e Aveia",
+        img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&h=400&fit=crop",
+        desc: "Cookies macios e doces naturalmente. Sem açúcar refinado, com banana e aveia. Ótimo lanche.",
+        texture: ["macio"],
+        color: ["marrom"],
+        nutrients: ["fibras", "proteina"],
+        allergens: ["gluten"],
+        prepTime: 10,
+        cookTime: 15,
+        totalTime: 25,
+        servings: "10-12 cookies",
+        difficulty: "Fácil",
+        ingredients: [
+          "2 bananas maduras amassadas",
+          "1 xícara de aveia em flocos",
+          "1 colher de sopa de óleo de coco ou azeite",
+          "1 colher de chá de canela",
+          "1 colher de chá de essência de baunilha (opcional)",
+          "Passas ou gotas de chocolate (opcional)"
+        ],
+        steps: [
+          "Pré-aqueça o forno a 180°C e forre uma forma com papel manteiga.",
+          "Amasse as bananas e misture com a aveia, o óleo, a canela e a baunilha.",
+          "Se quiser, adicione passas ou gotas de chocolate.",
+          "Faça bolinhas e achate levemente na forma.",
+          "Asse por 12-15 minutos até firmarem. Deixe esfriar antes de servir."
+        ],
+        tips: [
+          "Perfeito para fazer junto com a criança — amassar banana é divertido!",
+          "Guarde em pote fechado por até 3 dias. Ofereça como “biscoito especial”.",
+          "Versão sem glúten: use aveia certificada sem glúten."
+        ]
+      },
+      {
+        id: 8,
+        name: "Espetinhos de Frutas Coloridas",
+        img: "https://images.unsplash.com/photo-1564093497595-593b96d7e543?w=600&h=400&fit=crop",
+        desc: "Frutas frescas em espetinhos coloridos. Visual atrativo e texturas variadas em uma só apresentação.",
+        texture: ["crocante", "macio"],
+        color: ["multicolor", "vermelho", "verde"],
+        nutrients: ["vitamina-c", "fibras"],
+        allergens: [],
+        prepTime: 15,
+        cookTime: 0,
+        totalTime: 15,
+        servings: "4-6 espetinhos",
+        difficulty: "Muito fácil",
+        ingredients: [
+          "Morango",
+          "Uva (verde e roxa)",
+          "Kiwi",
+          "Banana em rodelas",
+          "Melão ou manga em cubos",
+          "Espetos de madeira ou plástico"
+        ],
+        steps: [
+          "Lave bem todas as frutas e corte em pedaços do tamanho de uma mordida.",
+          "Monte os espetinhos alternando cores e texturas.",
+          "Disponha em um prato bonito ou bandeja.",
+          "Sirva imediatamente ou leve à geladeira por até 1 hora."
+        ],
+        tips: [
+          "Deixe a criança montar o próprio espetinho — a autonomia aumenta o interesse.",
+          "Use como “caça ao tesouro” de cores: “qual cor você quer provar primeiro?”.",
+          "Não há obrigação de comer todas as frutas; o contato visual e tátil já é progresso."
+        ]
+      },
+      {
+        id: 9,
+        name: "Omelete de Espinafre em Forminhas",
+        img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&h=400&fit=crop",
+        desc: "Mini omeletes assados em forminhas de muffin. Porções individuais, fáceis de manusear e cheias de ferro.",
+        texture: ["macio"],
+        color: ["verde", "amarelo"],
+        nutrients: ["proteina", "ferro", "vitamina-a"],
+        allergens: ["ovos", "lactose"],
+        prepTime: 10,
+        cookTime: 18,
+        totalTime: 28,
+        servings: "6-8 mini omeletes",
+        difficulty: "Fácil",
+        ingredients: [
+          "4 ovos",
+          "1 xícara de espinafre picado",
+          "2 colheres de sopa de queijo ralado (opcional)",
+          "Sal e pimenta a gosto",
+          "Um fio de azeite para untar"
+        ],
+        steps: [
+          "Pré-aqueça o forno a 180°C e unte forminhas de muffin com azeite.",
+          "Bata os ovos com o sal. Adicione o espinafre e o queijo.",
+          "Distribua a mistura nas forminhas (cerca de 3/4 cheias).",
+          "Asse por 15-18 minutos até firmarem e dourarem levemente.",
+          "Deixe esfriar um pouco e desenforme. Sirva mornas ou frias."
+        ],
+        tips: [
+          "O formato de “bolinho” costuma ser mais atrativo que omelete tradicional.",
+          "Ofereça frio no lanche — muitas crianças preferem alimentos em temperatura ambiente.",
+          "Varie os vegetais (brócolis, cenoura ralada) conforme a aceitação."
+        ]
+      },
+      {
+        id: 10,
+        name: "Arroz Arco-Íris com Legumes",
+        img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&h=400&fit=crop",
+        desc: "Arroz colorido com legumes em diferentes texturas e cores. Uma refeição completa e visualmente estimulante.",
+        texture: ["misto"],
+        color: ["multicolor"],
+        nutrients: ["vitamina-a", "vitamina-c", "fibras", "proteina"],
+        allergens: [],
+        prepTime: 15,
+        cookTime: 25,
+        totalTime: 40,
+        servings: "4 porções",
+        difficulty: "Fácil",
+        ingredients: [
+          "1 xícara de arroz",
+          "1 cenoura em cubinhos",
+          "1/2 xícara de milho",
+          "1/2 xícara de ervilha",
+          "1/2 pimentão colorido picado",
+          "1 dente de alho",
+          "Azeite, sal e temperos a gosto"
+        ],
+        steps: [
+          "Refogue o alho no azeite. Adicione a cenoura e refogue por 3 minutos.",
+          "Acrescente o arroz e refogue por mais 1 minuto.",
+          "Adicione água quente (o dobro do volume do arroz), sal e cozinhe normalmente.",
+          "Nos últimos 5 minutos, misture o milho, a ervilha e o pimentão.",
+          "Desligue e deixe descansar 5 minutos antes de soltar com um garfo."
+        ],
+        tips: [
+          "Separe os legumes em “ilhas” de cores no prato para a criança escolher.",
+          "Envolva a criança na escolha das cores: “hoje vamos fazer um prato com 4 cores!”.",
+          "Não misture tudo se a criança preferir os alimentos separados — respeite a preferência."
+        ]
+      }
+    ];
+
+    // ========== STATE ==========
+    let activeFilters = {
+      texture: new Set(),
+      color: new Set(),
+      nutrient: new Set(),
+      allergy: new Set()
+    };
+
+    // ========== RENDER CARDS ==========
+    function renderRecipes() {
+      const grid = document.getElementById('recipesGrid');
+      const empty = document.getElementById('emptyState');
+      const countEl = document.getElementById('resultsCount');
+
+      const filtered = recipes.filter(recipe => {
+        // Texture: if any selected, recipe must have at least one match
+        if (activeFilters.texture.size > 0) {
+          const has = recipe.texture.some(t => activeFilters.texture.has(t));
+          if (!has) return false;
+        }
+        // Color
+        if (activeFilters.color.size > 0) {
+          const has = recipe.color.some(c => activeFilters.color.has(c));
+          if (!has) return false;
+        }
+        // Nutrient
+        if (activeFilters.nutrient.size > 0) {
+          const has = recipe.nutrients.some(n => activeFilters.nutrient.has(n));
+          if (!has) return false;
+        }
+        // Allergy: exclude recipes that CONTAIN any of the selected allergens
+        if (activeFilters.allergy.size > 0) {
+          const hasAllergen = recipe.allergens.some(a => activeFilters.allergy.has(a));
+          if (hasAllergen) return false;
+        }
+        return true;
+      });
+
+      countEl.textContent = `Mostrando ${filtered.length} receita${filtered.length !== 1 ? 's' : ''}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.add('show');
+        return;
+      }
+      empty.classList.remove('show');
+
+      grid.innerHTML = filtered.map(r => `
+        <article class="recipe-card" data-id="${r.id}" onclick="openModal(${r.id})">
+          <div class="recipe-img" style="background-image:url('${r.img}')">
+            <div class="recipe-tags">
+              ${r.texture.map(t => `<span class="tag">${capitalize(t)}</span>`).join('')}
+            </div>
+          </div>
+          <div class="recipe-body">
+            <h3>${r.name}</h3>
+            <div class="recipe-meta">
+              <span>⏱️ ${r.totalTime} min</span>
+              <span>👥 ${r.servings}</span>
+              <span>📊 ${r.difficulty}</span>
+            </div>
+            <p class="recipe-desc">${r.desc}</p>
+            <div class="recipe-footer">
+              <span style="font-size:0.8rem;color:var(--muted)">${r.nutrients.map(n => nutrientLabel(n)).join(' · ')}</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openModal(${r.id})">Ver receita</button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function nutrientLabel(n) {
+      const map = {
+        'vitamina-a': 'Vit. A',
+        'vitamina-c': 'Vit. C',
+        'ferro': 'Ferro',
+        'fibras': 'Fibras',
+        'proteina': 'Proteína',
+        'calcio': 'Cálcio'
+      };
+      return map[n] || n;
+    }
+
+    function allergenLabel(a) {
+      const map = {
+        gluten: 'Glúten',
+        lactose: 'Lactose',
+        ovos: 'Ovos',
+        oleaginosas: 'Oleaginosas'
+      };
+      return map[a] || a;
+    }
+
+    // ========== FILTERS ==========
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const group = chip.closest('.filter-options').dataset.filter;
+        const value = chip.dataset.value;
+
+        if (chip.classList.contains('active')) {
+          chip.classList.remove('active');
+          activeFilters[group].delete(value);
+        } else {
+          chip.classList.add('active');
+          activeFilters[group].add(value);
+        }
+        renderRecipes();
+      });
+    });
+
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      activeFilters = {
+        texture: new Set(),
+        color: new Set(),
+        nutrient: new Set(),
+        allergy: new Set()
+      };
+      renderRecipes();
+    });
+
+    // ========== MODAL ==========
+    function openModal(id) {
+      const recipe = recipes.find(r => r.id === id);
+      if (!recipe) return;
+
+      document.getElementById('modalImg').style.backgroundImage = `url('${recipe.img}')`;
+
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <h2>${recipe.name}</h2>
+        <div class="modal-tags">
+          ${recipe.texture.map(t => `<span class="modal-tag">${capitalize(t)}</span>`).join('')}
+          ${recipe.color.map(c => `<span class="modal-tag">${capitalize(c)}</span>`).join('')}
+          ${recipe.nutrients.map(n => `<span class="modal-tag">${nutrientLabel(n)}</span>`).join('')}
+          ${recipe.allergens.map(a => `<span class="modal-tag allergy">Contém ${allergenLabel(a)}</span>`).join('')}
+          ${recipe.allergens.length === 0 ? '<span class="modal-tag">Sem alérgenos comuns</span>' : ''}
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="label">⏱️ Preparo</div>
+            <div class="value">${recipe.prepTime} min</div>
+          </div>
+          <div class="info-box">
+            <div class="label">🔥 Cozimento</div>
+            <div class="value">${recipe.cookTime} min</div>
+          </div>
+          <div class="info-box">
+            <div class="label">⏳ Total</div>
+            <div class="value">${recipe.totalTime} min</div>
+          </div>
+          <div class="info-box">
+            <div class="label">👥 Porções</div>
+            <div class="value">${recipe.servings}</div>
+          </div>
+          <div class="info-box">
+            <div class="label">📊 Dificuldade</div>
+            <div class="value">${recipe.difficulty}</div>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>🥗 Ingredientes</h3>
+          <ul class="ingredients-list">
+            ${recipe.ingredients.map(i => `<li>${i}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>👨‍🍳 Modo de Preparo</h3>
+          <ol class="steps-list">
+            ${recipe.steps.map(s => `<li>${s}</li>`).join('')}
+          </ol>
+        </div>
+
+        <div class="modal-section">
+          <h3>💡 Guia de Abordagem para Pais</h3>
+          <div class="tips-box">
+            ${recipe.tips.map(t => `<p>• ${t}</p>`).join('')}
+          </div>
+        </div>
+
+        <div class="feedback-section">
+          <h3>📝 Registrar Feedback da Criança</h3>
+          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.8rem;">Como a criança reagiu a esta receita?</p>
+          <div class="feedback-btns" id="fbBtns-${recipe.id}">
+            <button class="fb-btn" data-value="aceitou" onclick="selectFeedback(${recipe.id}, 'aceitou', this)">✅ Aceitou</button>
+            <button class="fb-btn" data-value="experimentou" onclick="selectFeedback(${recipe.id}, 'experimentou', this)">👅 Experimentou</button>
+            <button class="fb-btn" data-value="recusou" onclick="selectFeedback(${recipe.id}, 'recusou', this)">❌ Recusou</button>
+            <button class="fb-btn" data-value="tocou" onclick="selectFeedback(${recipe.id}, 'tocou', this)">👆 Só tocou/cheirou</button>
+          </div>
+          <textarea class="feedback-note" id="fbNote-${recipe.id}" placeholder="Observações (opcional): o que gostou, o que rejeitou, contexto..."></textarea>
+          <button class="btn btn-primary btn-sm" onclick="saveFeedback(${recipe.id})">Salvar registro</button>
+          <div class="feedback-saved" id="fbSaved-${recipe.id}">✓ Feedback salvo com sucesso!</div>
+        </div>
+      `;
+
+      // Load previous feedback if exists
+      const saved = JSON.parse(localStorage.getItem('nutritec_feedback') || '{}');
+      if (saved[recipe.id]) {
+        const fb = saved[recipe.id];
+        document.querySelectorAll(`#fbBtns-${recipe.id} .fb-btn`).forEach(btn => {
+          if (btn.dataset.value === fb.response) btn.classList.add('selected');
+        });
+        document.getElementById(`fbNote-${recipe.id}`).value = fb.note || '';
+      }
+
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ========== FEEDBACK ==========
+    let currentFeedback = {};
+
+    function selectFeedback(id, value, btn) {
+      document.querySelectorAll(`#fbBtns-${id} .fb-btn`).forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentFeedback[id] = value;
+    }
+
+    function saveFeedback(id) {
+      const response = currentFeedback[id] || document.querySelector(`#fbBtns-${id} .fb-btn.selected`)?.dataset.value;
+      const note = document.getElementById(`fbNote-${id}`).value;
+
+      if (!response) {
+        alert('Selecione a reação da criança antes de salvar.');
+        return;
+      }
+
+      const saved = JSON.parse(localStorage.getItem('nutritec_feedback') || '{}');
+      saved[id] = {
+        response,
+        note,
+        date: new Date().toISOString()
+      };
+      localStorage.setItem('nutritec_feedback', JSON.stringify(saved));
+
+      const msg = document.getElementById(`fbSaved-${id}`);
+      msg.style.display = 'block';
+      setTimeout(() => { msg.style.display = 'none'; }, 3000);
+    }
+
+    // ========== MENU MOBILE ==========
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('open');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('mainNav').classList.remove('open');
+        }
+      });
+    });
+
+    // Init
+    renderRecipes();
+  </script>
+</body>
+</html>
